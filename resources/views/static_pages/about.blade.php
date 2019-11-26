@@ -2,5 +2,5 @@
 @section('title', '关于')
 
 @section('content')
-  <h1>关于页</h1>
+  <p>Record something，比如一些人民日报文摘、自己的所思所想；以及分享一些值得分享的东东</p>
 @stop

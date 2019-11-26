@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Auth;
 use Mail;
+use App\Handlers\ImageUploadHandler;
 
 class UsersController extends Controller
 {
@@ -64,7 +65,7 @@ class UsersController extends Controller
         return view('users.edit', compact('user'));
     }
 
-    public function update(User $user, Request $request)
+    public function update(User $user, Request $request, ImageUploadHandler $handler)
     {
         $this->authorize('update', $user);
         $this->validate($request, [
@@ -76,6 +77,14 @@ class UsersController extends Controller
         $data['name'] = $request->name;
         if ($request->password) {
             $data['password'] = bcrypt($request->password);
+        }
+
+        if ($request->avatar) {
+            $result = $handler->save($request->avatar, 'avatars', $user->id, 416);
+
+            if ($result) {
+                $data['avatar'] = $result['path'];
+            }
         }
         $user->update($data);
 

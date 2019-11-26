@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>@yield('title', 'Twitter') - Record something</title>
+    <link rel="shortcut icon" href="{{asset('favicon.ico')}}">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
   </head>
 

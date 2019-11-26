@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'avatar',
     ];
 
     protected $hidden = [
@@ -46,8 +46,13 @@ class User extends Authenticatable
 
     public function gravatar($size = '100')
     {
-        $hash = md5(strtolower(trim($this->attributes['email'])));
-        return "http://www.gravatar.com/avatar/$hash?s=$size";
+        if (is_null($this->attributes['avatar'])) {
+            $hash = md5(strtolower(trim($this->attributes['email'])));
+            $avatar = "http://www.gravatar.com/avatar/$hash?s=$size";
+        } else {
+            $avatar = $this->attributes['avatar'];
+        }
+        return $avatar;
     }
 
     public function statuses()
