@@ -41,6 +41,7 @@
 @section('script')
   <script type="text/javascript">
 
+
     $(function() {
       var editor = editormd("editor", {
         width: "100%",
@@ -54,18 +55,6 @@
         },
         path : "editormd/lib/"  // Autoload modules mode, codemirror, marked... dependents libs path
       });
-
-      @foreach ($feed_items as $status)
-      @endforeach
-      var testView = editormd.markdownToHTML("test-markdown-view0", {
-          // markdown : "[TOC]\n### Hello world!\n## Heading 2", // Also, you can dynamic set Markdown text
-          // htmlDecode : true,  // Enable / disable HTML tag encode.
-          // htmlDecode : "style,script,iframe",  // Note: If enabled, you should filter some dangerous HTML tags for website security.
-        });
     });
-
-
-{{--    document.getElementById('content{{$loop->index}}').innerHTML =--}}
-{{--      marked('{{ $status->content }}');--}}
   </script>
 @stop

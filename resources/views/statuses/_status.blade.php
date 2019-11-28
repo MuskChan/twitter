@@ -9,10 +9,7 @@
       </a>
       <small>    {{ $status->created_at->diffForHumans() }}</small>
     </h5>
-    <div id="test-markdown-view{{$loop->index}}">
-      <!-- Server-side output Markdown text -->
-      <textarea style="display:none;">{{ $status->content }}</textarea>
-    </div>
+    {!! parsedown($status->content, true) !!}
   </div>
 
 @can('destroy', $status)
