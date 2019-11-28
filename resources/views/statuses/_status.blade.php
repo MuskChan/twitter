@@ -7,12 +7,15 @@
       <a href="{{ route('users.show', $user->id )}}">
         {{ $user->name }}
       </a>
-      <small> / {{ $status->created_at->diffForHumans() }}</small>
+      <small>    {{ $status->created_at->diffForHumans() }}</small>
     </h5>
-    {{ $status->content }}
+    <div id="test-markdown-view{{$loop->index}}">
+      <!-- Server-side output Markdown text -->
+      <textarea style="display:none;">{{ $status->content }}</textarea>
+    </div>
   </div>
 
-  @can('destroy', $status)
+@can('destroy', $status)
     <form action="{{ route('statuses.destroy', $status->id) }}" method="POST" onsubmit="return confirm('您确定要删除本条微博吗？');">
       {{ csrf_field() }}
       {{ method_field('DELETE') }}
