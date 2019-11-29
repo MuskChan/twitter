@@ -4,6 +4,9 @@
     <title>@yield('title', 'Twitter') - Record something</title>
     <link rel="shortcut icon" href="{{asset('favicon.ico')}}">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <!-- editormd -->
+    <link rel="stylesheet" href="{{asset('editormd/editormd.preview.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('editormd/editormd.min.css')}}" />
   </head>
 
   <body>
@@ -19,6 +22,8 @@
 
     <script src="{{ mix('js/app.js') }}"></script>
   </body>
-  @yield('script')
+  <!-- JS 脚本 -->
+  @yield('js')
+  @yield('scriptsAfterJs')
 </html>
 

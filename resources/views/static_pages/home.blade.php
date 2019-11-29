@@ -33,15 +33,16 @@
     </div>
   @endif
 @stop
-<script src="https://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
-<script src="{{asset('editormd/editormd.min.js')}}"></script>
-<script src="{{asset('editormd/marked.min.js')}}"></script>
-<script src="{{asset('editormd/prettify.min.js')}}"></script>
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-@section('script')
+
+@section('js')
+  <script src="https://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+  <script src="{{asset('editormd/editormd.min.js')}}"></script>
+  <script src="{{asset('editormd/marked.min.js')}}"></script>
+  <script src="{{asset('editormd/prettify.min.js')}}"></script>
+@stop
+
+@section('scriptsAfterJs')
   <script type="text/javascript">
-
-
     $(function() {
       var editor = editormd("editor", {
         width: "100%",
