@@ -61,6 +61,11 @@ class User extends Authenticatable
         return $this->hasMany(Status::class);
     }
 
+    public function signatures()
+    {
+        return $this->hasMany(Signature::class);
+    }
+
     public function feed()
     {
         $user_ids = $this->followings->pluck('id')->toArray();

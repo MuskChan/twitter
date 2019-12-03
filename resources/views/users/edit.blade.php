@@ -22,7 +22,7 @@
             {{ csrf_field() }}
 
             <div class="form-group">
-              <label for="name">头像：</label>
+              <label for="avatar">头像：</label>
               <input type="file" name="avatar" class="form-control">
             </div>
 
@@ -34,6 +34,11 @@
             <div class="form-group">
               <label for="email">邮箱：</label>
               <input type="text" name="email" class="form-control" value="{{ $user->email }}" disabled>
+            </div>
+
+            <div class="form-group">
+              <label for="signature">个人签名：</label>
+              <input type="text" name="signature" class="form-control" value="{{ $signature->content }}" >
             </div>
 
             <div class="form-group">
