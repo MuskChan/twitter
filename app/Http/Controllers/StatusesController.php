@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Status;
 use Auth;
+use App\Notifications\TopicReplied;
+use App\Models\User;
 
 class StatusesController extends Controller
 {
@@ -13,7 +15,7 @@ class StatusesController extends Controller
         $this->middleware('auth');
     }
 
-    public function store(Request $request)
+    public function store(Request $request, User $user)
     {
         $this->validate($request, [
             'content' => 'required|max:14000'
@@ -22,6 +24,9 @@ class StatusesController extends Controller
         Auth::user()->statuses()->create([
             'content' => $request['content']
         ]);
+
+        $user->notify(new TopicReplied($request['content']));
+
         session()->flash('success', '发布成功！');
         return redirect()->back();
     }
@@ -32,5 +37,10 @@ class StatusesController extends Controller
         $status->delete();
         session()->flash('success', '微博已被成功删除！');
         return redirect()->back();
+    }
+
+    public function show(Status $status)
+    {
+        return view('statuses.show', compact('status'));
     }
 }

@@ -9,7 +9,9 @@
       </a>
       <small>    {{ $status->created_at->diffForHumans() }}</small>
     </h5>
-    {!! parsedown($status->content, true) !!}
+    <a href="{{ route('statuses.show', $status->id )}}">
+      {!! parsedown($status->content, true) !!}
+    </a>
   </div>
 
 @can('destroy', $status)

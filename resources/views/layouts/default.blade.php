@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>@yield('title', 'Twitter') - Record something</title>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="{{asset('favicon.ico')}}">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <!-- editormd -->
