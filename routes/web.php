@@ -23,6 +23,9 @@ Route::resource('statuses', 'StatusesController');
 //回复
 Route::resource('replies', 'RepliesController');
 
+//消息
+Route::resource('notifications', 'NotificationsController', ['only' => ['index']]);
+
 Route::get('/users/{user}/followings', 'UsersController@followings')->name('users.followings');
 Route::get('/users/{user}/followers', 'UsersController@followers')->name('users.followers');
 
