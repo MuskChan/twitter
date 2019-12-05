@@ -16,7 +16,8 @@ class ReplyObserver
     public function created(Reply $reply)
     {
         // 通知话题作者有新的评论
-        $reply->status->user->notify(new TopicReplied($reply));
+        $when = now()->addMinutes(10);
+        $reply->status->user->notify( (new TopicReplied($reply))->delay($when) );
     }
 
     /**
