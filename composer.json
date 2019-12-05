@@ -15,7 +15,8 @@
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
         "overtrue/laravel-lang": "~3.0",
-        "parsedown/laravel": "^1.2"
+        "parsedown/laravel": "^1.2",
+        "viacreative/sudo-su": "^1.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
