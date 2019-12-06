@@ -13,7 +13,7 @@
     @endif
 
     <section class="stats mt-2">
-      <strong id="followers" class="stat" style="text-align: center;">
+      <strong id="signature"  v-bind:title="message" class="stat" style="text-align: center;">
         hello
       </strong>
     </section>
@@ -39,4 +39,15 @@
     </section>
   </div>
 </div>
+@stop
+
+@section('scriptsAfterJs')
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#signature',
+      data: {
+        message: '签名'
+      }
+    })
+  </script>
 @stop

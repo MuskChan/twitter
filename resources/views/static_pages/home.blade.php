@@ -7,7 +7,7 @@
         <section class="status_form">
           @include('shared._status_form')
         </section>
-        <h4>twitter List</h4>
+        <h4 id="app">@{{ message }}</h4>
         <hr>
         @include('shared._feed')
       </div>
@@ -43,6 +43,13 @@
 
 @section('scriptsAfterJs')
   <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue!'
+      }
+    })
+
     $(function() {
       var editor = editormd("editor", {
         width: "100%",
