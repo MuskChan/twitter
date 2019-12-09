@@ -26,7 +26,8 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
-        $schedule->command('twitter:mail')->everyTenMinutes();
+        //时间粒子
+        $schedule->command('twitter:time-particle')->everyTenMinutes();
     }
 
     /**
