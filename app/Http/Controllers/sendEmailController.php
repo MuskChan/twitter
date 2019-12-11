@@ -39,12 +39,11 @@ class sendEmailController extends Controller
 
         $check = Redis::hMGet($hash, array($field));
 
-
         if ( (int) $check[0] < 10) {
             Redis::hIncrBy($hash, $field, 1);
             $this->sendEmailTo(Auth::user());
         }
 //        Redis::hDel($hash, $field);
-//        dd(Redis::hMGet($hash, array($field)));
+//        dd(Redis::hGetAll($hash));
     }
 }
