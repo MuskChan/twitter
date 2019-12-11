@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Models\TimeParticle as Particle;
+use App\Http\Controllers\sendEmailController;
 
 class TimeParticle extends Command
 {
@@ -40,6 +41,7 @@ class TimeParticle extends Command
     {
         $this->info('生成时间粒子中...');
         Particle::create();
+        sendEmailController::index();
         $this->info('生成完毕');
     }
 }

@@ -42,7 +42,7 @@ class CalculateActiveUser extends Command
     {
         $this->info('开始生成用户');
         User::create([
-            'name' => Str::random(11),
+            'name' => now().Str::random(11),
             'email' => Str::random(18).'@gmail.com',
             'password' => Hash::make('111111'),
         ]);

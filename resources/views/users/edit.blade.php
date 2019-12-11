@@ -38,7 +38,7 @@
 
             <div class="form-group">
               <label for="signature">个人签名：</label>
-              <input type="text" name="signature" class="form-control" value="{{ $signature->content }}" >
+              <input type="text" name="signature" class="form-control" value="{{ isset($signature->content)? $signature->content : '' }}" >
             </div>
 
             <div class="form-group">
