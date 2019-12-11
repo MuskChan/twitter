@@ -16,6 +16,7 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="{{ route('users.show', Auth::user()) }}">个人中心</a>
             <a class="dropdown-item" href="{{ route('users.edit', Auth::user()) }}">编辑资料</a>
+            <a class="dropdown-item" href="{{ route('send_emails.index', Auth::user()) }}">发送邮件</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" id="logout" href="#">
               <form action="{{ route('logout') }}" method="POST">
