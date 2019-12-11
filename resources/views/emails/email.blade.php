@@ -8,7 +8,7 @@
   <h1>你好</h1>
 
   <p>
-    how are you？
+    how are you？{{ print getenv('APP_URL') }} i am here
   </p>
 
   <p>
