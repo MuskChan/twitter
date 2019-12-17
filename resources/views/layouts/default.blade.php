@@ -4,6 +4,11 @@
     <title>@yield('title', 'Twitter') - Record something</title>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+{{--    <script src="{{ Request::getHost() }}:6001/socket.io/socket.io.js"></script>--}}
+{{--    <script src="{{ elixir('js/app.js') }}"></script>--}}
+    <script src="{{ Request::getHost() }}:6001/socket.io/socket.io.js"></script>
+    <script src="{{ asset('/js/app.js') }}"></script>
+
     <link rel="shortcut icon" href="{{asset('favicon.ico')}}">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <!-- editormd -->
@@ -27,6 +32,11 @@
   <!-- JS 脚本 -->
   <!-- development version, includes helpful console warnings -->
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+{{--  <script>--}}
+{{--    var conn = new WebSocket('ws://twitter.test:8080/echo');--}}
+{{--    conn.onmessage = function(e) { console.log(e.data); };--}}
+{{--    conn.onopen = function(e) { conn.send('Hello Me!'); };--}}
+{{--  </script>--}}
   @yield('js')
   @yield('scriptsAfterJs')
 </html>

@@ -41,3 +41,44 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+// import Echo from 'laravel-echo'
+//
+// window.io = require('socket.io-client');
+// window.Echo = new Echo({
+//   broadcaster: 'socket.io',
+//   host: window.location.hostname + ':6001'
+// });
+//
+// window.Echo.channel('test-event')
+//   .listen('ExampleEvent', (e) => {
+//     alert('来了')
+//     console.log(e);
+//   });
+//
+//
+// // import Echo from "laravel-echo"
+// //
+// // window.Echo = new Echo({
+// //   broadcaster: 'socket.io',
+// //   host: window.location.hostname + ':6001'
+// // });
+// //
+// window.Echo.channel('push')
+//   .listen('.push.message', (e) => {
+//     alert('来了')
+//     console.log(e);
+//   });
+
+
+import Echo from 'laravel-echo'
+window.Echo = new Echo({
+  broadcaster: 'socket.io',
+  host: window.location.hostname + ':6001'
+});
+
+window.Echo.channel(`orderStatus`) // Broadcast channel name
+  .listen('OrderShipped', (e) => { // Message name
+      console.log(e); // The operation performed by the message, the parameter e is the data carried
+    }
+  );

@@ -1,5 +1,7 @@
 <?php
 
+use App\Events\PublicMessageEvent;
+
 Route::get('/', 'StaticPagesController@home')->name('home');
 Route::get('/help', 'StaticPagesController@help')->name('help');
 Route::get('/about', 'StaticPagesController@about')->name('about');
@@ -29,7 +31,28 @@ Route::resource('notifications', 'NotificationsController', ['only' => ['index']
 //邮件
 Route::get('send_emails', 'sendEmailController@index')->name('send_emails.index');
 
+//时间粒子
 Route::get('time_particles', 'TimeParticlesController@index')->name('time_particles.index');
+
+//广播
+Route::get('test-broadcast', function(){
+    broadcast(new \App\Events\ExampleEvent);
+});
+
+Route::get('/echo', function () {
+    return view('echo');
+});
+
+Route::get('/push/{message}', function ($message) {
+    broadcast(new PublicMessageEvent($message));
+});
+
+
+//$app = new Ratchet\App('twitter.test', 8080);
+//$app->route('/chat', new MyChat, array('*'));
+//$app->route('/echo', new Ratchet\Server\EchoServer, array('*'));
+//$app->run();
+
 
 Route::get('/users/{user}/followings', 'UsersController@followings')->name('users.followings');
 Route::get('/users/{user}/followers', 'UsersController@followers')->name('users.followers');
